@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "원 드로잉", "원 드로잉\원 드로잉.csproj", "{39A6D35B-0240-45C7-BCD3-0D42F9B6DF81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39A6D35B-0240-45C7-BCD3-0D42F9B6DF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A6D35B-0240-45C7-BCD3-0D42F9B6DF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A6D35B-0240-45C7-BCD3-0D42F9B6DF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A6D35B-0240-45C7-BCD3-0D42F9B6DF81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BEC5441-CA3D-422C-9FD6-BB5EFA10AE7C}
+	EndGlobalSection
+EndGlobal

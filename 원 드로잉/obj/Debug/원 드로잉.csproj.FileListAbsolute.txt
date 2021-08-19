@@ -1,0 +1,10 @@
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\bin\Debug\원 드로잉.exe.config
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\bin\Debug\원 드로잉.exe
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\bin\Debug\원 드로잉.pdb
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\obj\Debug\원 드로잉.csproj.AssemblyReference.cache
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\obj\Debug\원_드로잉.Form1.resources
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\obj\Debug\원_드로잉.Properties.Resources.resources
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\obj\Debug\원 드로잉.csproj.GenerateResource.cache
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\obj\Debug\원 드로잉.csproj.CoreCompileInputs.cache
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\obj\Debug\원 드로잉.exe
+C:\Users\겨울엔군고구마한잔\source\repos\원 드로잉\원 드로잉\obj\Debug\원 드로잉.pdb

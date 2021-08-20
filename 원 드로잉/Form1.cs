@@ -22,15 +22,16 @@ namespace 원_드로잉
         // Declare Position Variable of Sun in Int
         public double lx = 1;
         public double ly = 1;
-        public double lz = 1;
+        public double lz = -1;
 
         // Declare Radius
         public double radius=200;
 
         // Declare Light of Direct and Ambient
-        public int Direct = 255;
+        public int Direct = 100;
         public int Ambient = 50;
 
+        public double K = 1;
         public double L;
         public double Dot;
 
@@ -92,19 +93,19 @@ namespace 원_드로잉
                         z = Math.Sqrt(Math.Pow(radius, 2) - (Math.Pow(i - pictureBox1.Width / 2, 2) + Math.Pow(j - pictureBox1.Height / 2, 2)));
                         // I use Convet.ToDouble, because 'int'/'int' or 'int'/'double''s result 'int', too.
                         // But I must need to use 'double' result in 'Dot'
-                        Dot = (Convert.ToDouble(i-pictureBox1.Width/2)/radius)*(lx/L)+ (Convert.ToDouble(j - pictureBox1.Height / 2) / radius) * (ly / L) + (z/radius)*(ly/L);
+                        Dot = (Convert.ToDouble(i-pictureBox1.Width/2)/radius)*(lx/L)+ (Convert.ToDouble(j - pictureBox1.Height / 2) / radius) * (ly / L) + (z/radius)*(lz/L);
                         
                         // "Dot <0"'s mean is angle of Light Vector between Sqhere Linear Position Vector is 180 ~ 90
                         // "Dot >=0" 's mean is angle of Light Vector between Sqhere Linear Position Vector is 0 ~ 90 >> Degree of Light have been decreasing
                         if (Dot < 0)
                         {
-                            if ((-Dot) * Direct+Ambient > 255)
+                            if (Math.Pow((-Dot) * Direct, K) + Ambient > 255)
                             {
                                 nBright = 255;
                             }
                             else
                             {
-                                nBright = Convert.ToInt32((-Dot) * Direct+Ambient);
+                                nBright = Convert.ToInt32(Math.Pow((-Dot) * Direct,K)+Ambient);
                             }
                         }
                         else

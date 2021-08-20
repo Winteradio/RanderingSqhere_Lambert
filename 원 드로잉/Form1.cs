@@ -20,16 +20,16 @@ namespace 원_드로잉
         public int nBright;
 
         // Declare Position Variable of Sun in Int
-        public int lx = 1;
-        public int ly = 1;
-        public int lz = 1;
+        public double lx = 1;
+        public double ly = 1;
+        public double lz = 1;
 
         // Declare Radius
-        public int radius=200;
+        public double radius=200;
 
         // Declare Light of Direct and Ambient
         public int Direct = 255;
-        public int Ambient = 0;
+        public int Ambient = 50;
 
         public double L;
         public double Dot;
@@ -66,34 +66,50 @@ namespace 원_드로잉
         
         // 벡터의 내적값의 범위 0 ~ 1
         // 0 : 90도 , 1 : 0도
-        // 벡터의 내적값 >=0 일 경우 : 빛과 지정된 면이 닿는다는 의미로 해석 가능 >> "람베르트 반사" 공식 활용
-        // 벡터의 내적값 <0 일 경우 : 빛과 지정된 면이 닿지않는다는 의미로 해석 가능 >> 90 ~ 180도의 빛의 밝기는 모두 동일하다고 생각
+        // 벡터의 내적값 <0 일 경우 : 빛과 지정된 면이 닿는다는 의미로 해석 가능 >> "람베르트 반사" 공식 활용
+        // 벡터의 내적값 >=0 일 경우 : 빛과 지정된 면이 닿지않는다는 의미로 해석 가능 >> 90 ~ 180도의 빛의 밝기는 모두 동일하다고 생각
       
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // PictureBox Coodrination System
+            // (Left Up Position) = (0,0) , (Right Down Position) = (Max,Max)
             Graphics g = pictureBox1.CreateGraphics();
+
+            // L is size of Light Vector
             L = Math.Sqrt(Math.Pow(lx, 2) + Math.Pow(ly, 2) + Math.Pow(lz, 2));
-            for (int j =0; j < pictureBox1.Height; j+=2)
+
+            // I draw Picturebox going >>> and down line, repeating until draw at all 
+            for (int j =0; j < pictureBox1.Height; j++)
             {
-                for (int i = 0; i < pictureBox1.Width; i+=2)
+                for (int i = 0; i < pictureBox1.Width; i++)
                 {
-                    if (Math.Pow(radius,2) - (Math.Pow(i-pictureBox1.Width/2,2)+Math.Pow(j-pictureBox1.Height/2,2)) > 0.0f)
+
+                    // This mean is "Only draw in Sqhere Area
+                    if (Math.Pow(radius,2) - (Math.Pow(i-pictureBox1.Width/2,2)+Math.Pow(j-pictureBox1.Height/2,2)) > 0)
                     {
+                        // z is Position Vector Z of Sqhere 
                         z = Math.Sqrt(Math.Pow(radius, 2) - (Math.Pow(i - pictureBox1.Width / 2, 2) + Math.Pow(j - pictureBox1.Height / 2, 2)));
-                        Dot = ((i - pictureBox1.Width / 2) / radius) * (lx / L) + ((j - pictureBox1.Height / 2) / radius) * (ly / L) + (z / radius) * (lz / L);
+                        // I use Convet.ToDouble, because 'int'/'int' or 'int'/'double''s result 'int', too.
+                        // But I must need to use 'double' result in 'Dot'
+                        Dot = (Convert.ToDouble(i-pictureBox1.Width/2)/radius)*(lx/L)+ (Convert.ToDouble(j - pictureBox1.Height / 2) / radius) * (ly / L) + (z/radius)*(ly/L);
                         
-                        if (Dot > 0.0f)
+                        // "Dot <0"'s mean is angle of Light Vector between Sqhere Linear Position Vector is 180 ~ 90
+                        // "Dot >=0" 's mean is angle of Light Vector between Sqhere Linear Position Vector is 0 ~ 90 >> Degree of Light have been decreasing
+                        if (Dot < 0)
                         {
-                            nBright = Convert.ToInt32(Dot * Direct + Ambient);
+                            if ((-Dot) * Direct+Ambient > 255)
+                            {
+                                nBright = 255;
+                            }
+                            else
+                            {
+                                nBright = Convert.ToInt32((-Dot) * Direct+Ambient);
+                            }
                         }
                         else
                         {
                             nBright = Convert.ToInt32(Ambient);
-                        }
-                        if (nBright >= 255)
-                        {
-                            nBright = 255;
                         }
                         Pen mypen = new Pen(Color.FromArgb(nBright, nBright, nBright, nBright), 0.1f);
                         g.DrawLine(mypen, i, j, i+1, j);
